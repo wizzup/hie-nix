@@ -66,7 +66,13 @@ in with pkgs; rec {
    makeWrapper ${hie84}/bin/hie-wrapper $out/bin/hie-wrapper \
      --prefix PATH : $out/bin
  '';
+
  hie82 = jse (import ./ghc-8.2.nix { inherit pkgs; }).haskell-ide-engine;
  hie84 = jse hie84Pkgs.haskell-ide-engine;
  hie86 = jse hie86Pkgs.haskell-ide-engine;
+
+ ghc-mod80 = jse (import ./ghc-8.0.nix { inherit pkgs; }).ghc-mod;
+ ghc-mod82 = jse (import ./ghc-8.2.nix { inherit pkgs; }).ghc-mod;
+ ghc-mod84 = jse hie84Pkgs.ghc-mod;
+ ghc-mod86 = jse hie86Pkgs.ghc-mod;
 }
